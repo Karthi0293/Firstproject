@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="00eab6e3-a366-48e0-906a-cd293686a3b6" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mule-appFlow" doc:id="b0c86832-116f-4803-af5b-da719381c82a" >
+		<http:listener doc:name="Listener" doc:id="a35f9cae-cedb-458c-9008-21966d6fa639" config-ref="HTTP_Listener_config" path="/cicd"/>
+		<set-payload value="checcking git actions " doc:name="Set Payload" doc:id="1d1dd446-a5cf-4142-bc3b-7e4a1453d53b" />
+		<logger level="INFO" doc:name="Logger" doc:id="291e8091-ce61-40f8-af1e-a6674c9e309b" message="#[payload]"/>
+	</flow>
+</mule>
